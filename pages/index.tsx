@@ -52,8 +52,9 @@ const Home = () => {
     const updatedActiveImage = recentlyAddedImages.find((i) => i.id === activeImage?.id)
     if (updatedActiveImage !== undefined) {
       setActiveImage(updatedActiveImage)
+    } else {
+      setActiveImage(recentlyAddedImages[0])
     }
-    setActiveImage(recentlyAddedImages[0])
   }, [recentlyAddedImages])
 
   const findActiveImage = (image: ImagesResponseData) => {
