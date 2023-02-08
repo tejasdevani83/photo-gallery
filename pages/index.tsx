@@ -84,60 +84,62 @@ const Home = () => {
           </TabContainer>
           <TabPanel hidden={selectedTab !== 'Recently Added'}>
             <PhotoGridContainer>
-              {recentlyAddedImages.map((image) => (
-                <PhotoGridItem key={image.id}>
-                  <div className='image-wrapper'>
-                    <Link
-                      href=""
-                      role={'button'}
-                      onClick={() =>
-                        findActiveImage(image)
-                      }
-                    >
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        className={`grid-image ${activeImage?.id === image.id ? 'grid-image-active' : ''}`}
-                        src={image.url}
-                        alt={image.filename}
-                        height={120}
-                      />
-                    </Link>
-                    <div>
-                      <ImageName>{truncate(image.filename)}</ImageName>
-                      <span className='image-size'>{(image.sizeInBytes / 1000000).toFixed(2)} MB</span>
+              {recentlyAddedImages.length > 0 ?
+                recentlyAddedImages.map((image) => (
+                  <PhotoGridItem key={image.id}>
+                    <div className='image-wrapper'>
+                      <Link
+                        href=""
+                        role={'button'}
+                        onClick={() =>
+                          findActiveImage(image)
+                        }
+                      >
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          className={`grid-image ${activeImage?.id === image.id ? 'grid-image-active' : ''}`}
+                          src={image.url}
+                          alt={image.filename}
+                          height={120}
+                        />
+                      </Link>
+                      <div>
+                        <ImageName>{truncate(image.filename)}</ImageName>
+                        <span className='image-size'>{(image.sizeInBytes / 1000000).toFixed(2)} MB</span>
+                      </div>
                     </div>
-                  </div>
-                </PhotoGridItem>
-              ))}
+                  </PhotoGridItem>
+                )) : 'No images available'}
             </PhotoGridContainer>
           </TabPanel>
           <TabPanel hidden={selectedTab !== 'Favorited'}>
             <PhotoGridContainer>
-              {favoritedImages.map((image) => (
-                <PhotoGridItem key={image.id}>
-                  <div className='image-wrapper'>
-                    <Link
-                      href=""
-                      role={'button'}
-                      onClick={() =>
-                        findActiveImage(image)
-                      }
-                    >
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        className={`grid-image ${activeImage?.id === image.id ? 'grid-image-active' : ''}`}
-                        src={image.url}
-                        alt={image.filename}
-                        height={120}
-                      />
-                    </Link>
-                    <div>
-                      <ImageName>{truncate(image.filename)}</ImageName>
-                      <span className='image-size'>{(image.sizeInBytes / 1000000).toFixed(2)} MB</span>
+              {favoritedImages.length > 0 ?
+                favoritedImages.map((image) => (
+                  <PhotoGridItem key={image.id}>
+                    <div className='image-wrapper'>
+                      <Link
+                        href=""
+                        role={'button'}
+                        onClick={() =>
+                          findActiveImage(image)
+                        }
+                      >
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          className={`grid-image ${activeImage?.id === image.id ? 'grid-image-active' : ''}`}
+                          src={image.url}
+                          alt={image.filename}
+                          height={120}
+                        />
+                      </Link>
+                      <div>
+                        <ImageName>{truncate(image.filename)}</ImageName>
+                        <span className='image-size'>{(image.sizeInBytes / 1000000).toFixed(2)} MB</span>
+                      </div>
                     </div>
-                  </div>
-                </PhotoGridItem>
-              ))}
+                  </PhotoGridItem>
+                )) : 'No images available'}
             </PhotoGridContainer>
           </TabPanel>
         </div>
